@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import type { LinkHubProfile, LinkItem, SocialLink } from "@/types/links";
 import { cn } from "@/utils/cn";
 import {
-	ArrowRight,
 	BookOpen,
 	ChevronLeft,
 	ChevronRight,

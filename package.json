@@ -1,16 +1,28 @@
 {
   "name": "links.fixfx.wiki",
-  "private": true,
+  "description": "A curated collection of useful links related to FixFX, including documentation, community resources, and tools.",
+  "author": "CodeMeAPixel <https://github.com/CodeMeAPixel>",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodeMeAPixel/FixFX-LinkInBio.git"
+  },
+  "bugs": {
+    "email": "hey@codemeapixel.dev",
+    "url": "https://github.com/CodeMeAPixel/FixFX-LinkInBio/issues"
+  },
+  "homepage": "https://links.fixfx.wiki",
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "build": "vite build && tsc --noEmit",
     "preview": "vite preview",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
     "check": "biome check",
-    "start": "node .output/server/index.mjs"
+    "deploy": "bun run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
@@ -21,7 +33,6 @@
     "@tanstack/router-plugin": "^1.132.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.561.0",
-    "nitro": "npm:nitro-nightly@latest",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.0.0",
@@ -30,6 +41,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
+    "@cloudflare/vite-plugin": "^1.23.1",
     "@tanstack/devtools-vite": "^0.3.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
@@ -41,6 +53,7 @@
     "typescript": "^5.7.2",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
-    "web-vitals": "^5.1.0"
+    "web-vitals": "^5.1.0",
+    "wrangler": "^4.63.0"
   }
 }
