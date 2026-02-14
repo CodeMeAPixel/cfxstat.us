@@ -29,7 +29,7 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "FixFX Status | The unofficial Cfx.re Service Monitor",
+				title: "The unofficial Cfx.re Service Monitor",
 			},
 			{
 				name: "description",
@@ -42,7 +42,7 @@ export const Route = createRootRoute({
 			},
 			{
 				property: "og:title",
-				content: "FixFX Status | The unofficial Cfx.re Service Monitor",
+				content: "The unofficial Cfx.re Service Monitor",
 			},
 			{
 				property: "og:description",
@@ -75,7 +75,7 @@ export const Route = createRootRoute({
 			},
 			{
 				name: "twitter:title",
-				content: "FixFX Status | The unofficial Cfx.re Service Monitor",
+				content: "The unofficial Cfx.re Service Monitor",
 			},
 			{
 				name: "twitter:description",
