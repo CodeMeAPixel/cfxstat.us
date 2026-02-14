@@ -1,4 +1,4 @@
-import { Activity, ExternalLink } from "lucide-react";
+import { Activity, Github } from "lucide-react";
 
 export function StatusHeader() {
 	return (
@@ -19,13 +19,14 @@ export function StatusHeader() {
 				</div>
 
 				<a
-					href="https://fixfx.wiki"
+					href="https://github.com/CodeMeAPixel/cfxstat.us"
 					target="_blank"
 					rel="noopener noreferrer"
 					className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
+					aria-label="View source code on GitHub"
 				>
-					by FixFX
-					<ExternalLink size={12} />
+					<Github size={14} />
+					Source
 				</a>
 			</div>
 		</header>

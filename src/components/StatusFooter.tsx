@@ -1,4 +1,4 @@
-import { Github, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export function StatusFooter() {
 	return (
@@ -20,17 +20,6 @@ export function StatusFooter() {
 					<p className="text-center text-gray-600">
 						Not affiliated with Cfx.re / Rockstar Games.
 					</p>
-
-					<a
-					href="https://github.com/CodeMeAPixel/cfxstat.us"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors"
-						aria-label="View source code on GitHub"
-					>
-						<Github size={14} />
-						Source
-					</a>
 				</div>
 			</div>
 		</footer>
