@@ -22,7 +22,7 @@ export function StatusFooter() {
 					</p>
 
 					<a
-						href="https://github.com/FixFXOSS/cfxstat.us"
+					href="https://github.com/CodeMeAPixel/cfxstat.us"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors"

@@ -54,9 +54,7 @@ function ServiceRow({ service }: ServiceRowProps) {
 					{service.name}
 				</span>
 			</div>
-
 			<div className="flex items-center gap-4 shrink-0">
-				{/* Response time */}
 				<div
 					className={cn(
 						"flex items-center gap-1 text-xs font-mono",
@@ -66,8 +64,6 @@ function ServiceRow({ service }: ServiceRowProps) {
 					<Zap size={12} />
 					{formatMs(service.responseTime)}
 				</div>
-
-				{/* Status code */}
 				{service.statusCode !== null && (
 					<span
 						className={cn(
@@ -108,7 +104,6 @@ export function ServiceCategoryCard({
 				"hover:border-white/10 hover:bg-white/3",
 			)}
 		>
-			{/* Category header */}
 			<button
 				type="button"
 				onClick={() => setOpen((v) => !v)}
@@ -133,7 +128,6 @@ export function ServiceCategoryCard({
 						</p>
 					</div>
 				</div>
-
 				<div className="flex items-center gap-3">
 					<StatusBadge status={category.overallStatus} size="sm" />
 					{open ? (
@@ -143,8 +137,6 @@ export function ServiceCategoryCard({
 					)}
 				</div>
 			</button>
-
-			{/* Service rows */}
 			{open && (
 				<div className="border-t border-white/4 px-2 pb-2">
 					{category.services.map((svc) => (

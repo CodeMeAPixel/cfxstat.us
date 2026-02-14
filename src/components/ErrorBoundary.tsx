@@ -11,7 +11,6 @@ export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 
 			<div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16">
 				<div className="max-w-3xl w-full text-center space-y-8">
-					{/* Error Icon */}
 					<div className="relative inline-flex">
 						<div className="relative">
 							<AlertTriangle
@@ -22,8 +21,6 @@ export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 							<div className="absolute inset-0 blur-2xl bg-red-500/30 -z-10" />
 						</div>
 					</div>
-
-					{/* Error Message */}
 					<div className="space-y-4">
 						<h1 className="text-4xl md:text-5xl font-bold text-white">
 							Something Went Wrong
@@ -33,8 +30,6 @@ export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 							notified. Please try refreshing the page or return home.
 						</p>
 					</div>
-
-					{/* Error Details (Dev Only) */}
 					{isDev && error && (
 						<div className="mt-8 p-6 rounded-xl bg-red-950/20 border border-red-900/30 backdrop-blur-sm text-left max-w-2xl mx-auto">
 							<p className="text-red-400 font-mono text-sm mb-3 font-semibold">
@@ -52,8 +47,6 @@ export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 							</div>
 						</div>
 					)}
-
-					{/* Action Buttons */}
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
 						<button
 							type="button"
@@ -80,8 +73,6 @@ export function ErrorBoundary({ error, reset }: ErrorComponentProps) {
 							</div>
 						</Link>
 					</div>
-
-					{/* Help Text */}
 					<div className="pt-8 space-y-2">
 						<p className="text-gray-500 text-sm">
 							If this issue persists, please contact us at{" "}

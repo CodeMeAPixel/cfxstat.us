@@ -5,6 +5,9 @@ All notable changes to CFX Status will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-02-14
+- Migrate repo URLs back to `CodeMeAPixel/cfxstat.us`
+
 ## [0.1.1] - 2026-02-14
 
 ### Added
@@ -23,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Request Timeout** — Increased from 8 seconds to 15 seconds per endpoint
 - **API Cache Headers** — Changed from `max-age=30, s-maxage=30` to `max-age=120, s-maxage=300`
 - **Domain** — Updated from `status.fixfx.wiki` to `cfxstat.us`
-- **Repository** — Moved from `CodeMeAPixel/fixfx-status` to `FixFXOSS/cfxstat.us`
+- **Repository** — Moved from `CodeMeAPixel/fixfx-status` to `CodeMeAPixel/cfxstat.us`
 - **User-Agent** — Updated to `cfxstat.us/1.0 (status-checker)`
 
 ### Fixed

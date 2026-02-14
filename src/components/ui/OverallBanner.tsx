@@ -30,7 +30,6 @@ export function OverallBanner({
 				cfg.bg,
 			)}
 		>
-			{/* Glow effect */}
 			<div
 				className={cn(
 					"absolute -top-1/2 -right-1/4 h-64 w-64 rounded-full blur-[100px] opacity-20",
@@ -39,7 +38,6 @@ export function OverallBanner({
 			/>
 
 			<div className="relative z-10 flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
-				{/* Pulsing indicator */}
 				<div className="relative flex h-14 w-14 items-center justify-center">
 					<span
 						className={cn(

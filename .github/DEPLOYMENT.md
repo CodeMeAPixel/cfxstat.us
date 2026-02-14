@@ -1,6 +1,6 @@
-# Cloudflare Workers Deployment Guide
+# Cloudflare Workers Deployment
 
-This guide covers deploying FixFX Links to Cloudflare Workers.
+Deploy to Cloudflare Workers.
 
 ## Prerequisites
 
@@ -19,86 +19,65 @@ wrangler login
 
 This will open a browser to grant Wrangler access to your Cloudflare account.
 
-### 2. Configure wrangler.toml
+### 2. Configure wrangler.jsonc
 
-Update the `wrangler.toml` file with your settings:
+Update `wrangler.jsonc` with your account ID:
 
-```toml
-account_id = "your-account-id"  # Found in Cloudflare dashboard
+```json
+{
+  "account_id": "your-account-id",
+  "routes": [
+    { "pattern": "cfxstat.us", "custom_domain": true }
+  ]
+}
 ```
 
-For production with a custom domain:
-
-```toml
-[env.production]
-name = "fixfx-links-prod"
-routes = [
-  { pattern = "links.fixfx.wiki", zone_name = "fixfx.wiki" }
-]
-```
-
-Replace `links.fixfx.wiki` and `fixfx.wiki` with your actual domain.
-
-### 3. Deploy to Workers
-
-Deploy to the default development environment:
+### 3. Deploy
 
 ```bash
 bun run deploy
 ```
 
-Or deploy to production:
-
-```bash
-bun run deploy -e production
-```
-
-The site will be available at:
-- Development: `https://fixfx-links.workers.dev`
-- Production: `https://links.fixfx.wiki` (if configured)
+The site will be available at `https://cfxstat.us`.
 
 ## Environment Variables
 
-To set environment variables for your Workers:
+Set secrets:
 
 ```bash
 wrangler secret put VARIABLE_NAME
 ```
 
-Then access in your code:
+Access in code:
 
 ```typescript
 const value = process.env.VARIABLE_NAME
 ```
 
-## Monitoring & Logs
+## Monitoring
 
-View real-time logs:
+View logs:
 
 ```bash
 wrangler tail
 ```
 
-View in Cloudflare dashboard:
-1. Log in to https://dash.cloudflare.com
-2. Go to Workers > your-project > Logs
+Or in the Cloudflare dashboard at https://dash.cloudflare.com.
 
-## Custom Domain Setup
+## Custom Domain
 
-To use a custom domain with Cloudflare Workers:
+1. Register domain with Cloudflare
+2. Update `wrangler.jsonc` with routes
+3. Redeploy: `bun run deploy`
+4. Verify in Cloudflare dashboard
 
-1. Buy domain through Cloudflare or point nameservers to Cloudflare
-2. Update `wrangler.toml` with route configuration
-3. Redeploy: `bun run deploy -e production`
-4. Navigate to your domain in Cloudflare dashboard and verify Workers route
+## Performance
 
-## Performance Optimization
-
-Cloudflare Workers provides built-in optimizations:
-- Global edge network distribution
-- Automatic gzip compression
-- HTTP/2 and HTTP/3 support
-- Automatic HTTPS with free SSL
+Cloudflare Workers provides:
+- Global edge network
+- Automatic compression
+- HTTP/2 and HTTP/3
+- Free SSL
 
 ## Troubleshooting
 
@@ -106,44 +85,34 @@ Cloudflare Workers provides built-in optimizations:
 Run `wrangler login` again to re-authenticate.
 
 ### Build fails
-Ensure all dependencies are installed:
+
 ```bash
 bun install
 ```
 
 ### Site not loading
-Check Workers dashboard for errors:
-1. https://dash.cloudflare.com
-2. Workers > fixfx-links > Deployments
+
+Check the Cloudflare dashboard for errors.
 
 ### Custom domain not working
-Verify in Cloudflare dashboard:
-1. Domain is using Cloudflare nameservers
-2. Workers route matches your domain exactly
-3. SSL/TLS is set to "Full" or better
+
+Verify domain is using Cloudflare nameservers and Workers route is configured.
 
 ## Rollback
 
-To rollback to a previous deployment:
-
-1. Go to Cloudflare dashboard
-2. Workers > fixfx-links > Deployments
-3. Click the deployment you want to rollback to
-4. Click "Rollback"
+In the Cloudflare dashboard: Workers > Deployments > select and rollback.
 
 ## Local Testing
 
-Test the production build locally:
-
 ```bash
 bun run build
-bun run start
+bun run preview
 ```
 
-Then visit `http://localhost:3000`
+Visit `http://localhost:3000`
 
-## Additional Resources
+## Resources
 
-- Cloudflare Workers Docs: https://developers.cloudflare.com/workers/
-- Wrangler CLI Docs: https://developers.cloudflare.com/workers/wrangler/
-- TanStack Start Deployment: https://tanstack.com/start/latest/docs/framework/react/guide/deploying
+- [Cloudflare Workers Docs](https://developers.cloudflare.com/workers/)
+- [Wrangler CLI Docs](https://developers.cloudflare.com/workers/wrangler/)
+- [TanStack Start Deployment](https://tanstack.com/start/latest/docs/framework/react/guide/deploying)

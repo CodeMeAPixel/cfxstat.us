@@ -7,25 +7,17 @@ import type {
 	StatusSummary,
 } from "@/types/status";
 
-/** Per-request timeout: 15 seconds. */
 const TIMEOUT_MS = 15_000;
 
-/** Max concurrent requests to avoid hammering CFX. */
 const MAX_CONCURRENCY = 4;
 
-/** Retry config with exponential backoff. */
 const MAX_RETRIES = 2;
 const BASE_BACKOFF_MS = 1_000;
 
-/** Simple sleep helper. */
 function sleep(ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Run an array of async fns with a concurrency cap.
- * Prevents slamming all endpoints at once.
- */
 async function withConcurrency<T>(
 	fns: (() => Promise<T>)[],
 	limit: number,
@@ -47,18 +39,12 @@ async function withConcurrency<T>(
 	return results;
 }
 
-/**
- * Probe one endpoint and return a result.
- * Retries with exponential backoff on transient failures.
- * Respects rate-limit headers (Retry-After / 429).
- */
 async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 	let lastError: string | undefined;
 	let lastStatusCode: number | null = null;
 	let lastElapsed = 0;
 
 	for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
-		// Exponential backoff between retries
 		if (attempt > 0) {
 			const backoff = BASE_BACKOFF_MS * 2 ** (attempt - 1);
 			await sleep(backoff);
@@ -82,7 +68,6 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 			lastElapsed = Math.round(performance.now() - start);
 			lastStatusCode = res.status;
 
-			// If we hit a rate-limit, honour Retry-After and retry
 			if (res.status === 429) {
 				const retryAfter = res.headers.get("Retry-After");
 				const waitMs = retryAfter
@@ -93,7 +78,6 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 				continue;
 			}
 
-			// Custom response validation if provided
 			if (svc.validateResponse) {
 				try {
 					const body = await res.text();
@@ -119,7 +103,6 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 				}
 			}
 
-			// Standard status-code check
 			const expected = svc.expectedStatus ?? 200;
 			const ok = svc.acceptRange
 				? res.status >= 200 && res.status < 400
@@ -136,13 +119,11 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 				};
 			}
 
-			// 5xx errors are transient — retry
 			if (res.status >= 500 && attempt < MAX_RETRIES) {
 				lastError = `HTTP ${res.status}`;
 				continue;
 			}
 
-			// Non-retryable failure
 			return {
 				id: svc.id,
 				name: svc.name,
@@ -157,14 +138,10 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 			const isTimeout = (err as Error).name === "AbortError";
 			lastError = isTimeout ? "Request timed out" : (err as Error).message;
 
-			// Timeouts and network errors are retryable
-			if (attempt < MAX_RETRIES) {
-				// Retry on next iteration
-			}
+			if (attempt < MAX_RETRIES) {} // Retry on next itteration.
 		}
 	}
 
-	// All retries exhausted
 	return {
 		id: svc.id,
 		name: svc.name,
@@ -176,7 +153,6 @@ async function checkEndpoint(svc: ServiceEndpoint): Promise<ServiceResult> {
 	};
 }
 
-/** Derive worst status from a list of results. */
 function worstStatus(results: ServiceResult[]): ServiceStatus {
 	if (results.some((r) => r.status === "major")) return "major";
 	if (results.some((r) => r.status === "degraded")) return "degraded";
@@ -185,14 +161,9 @@ function worstStatus(results: ServiceResult[]): ServiceStatus {
 	return "operational";
 }
 
-/**
- * Check all services across all categories and return a full summary.
- * Uses concurrency limiting to avoid hammering endpoints.
- */
 export async function checkAllServices(
 	categories: ServiceCategory[],
 ): Promise<StatusSummary> {
-	// Flatten all endpoints into tasks, preserving category mapping
 	const tasks: {
 		catIdx: number;
 		svcIdx: number;
@@ -206,13 +177,11 @@ export async function checkAllServices(
 		}
 	}
 
-	// Run all checks with concurrency cap
 	const results = await withConcurrency(
 		tasks.map((t) => t.fn),
 		MAX_CONCURRENCY,
 	);
 
-	// Rebuild category results
 	const categoryResults: CategoryResult[] = categories.map((cat) => ({
 		id: cat.id,
 		name: cat.name,

@@ -13,15 +13,12 @@ function NotFoundPage() {
 
 			<div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16">
 				<div className="max-w-2xl w-full text-center space-y-8">
-					{/* 404 Display */}
 					<div className="relative">
 						<h1 className="text-[180px] font-bold leading-none bg-clip-text text-transparent bg-linear-to-br from-blue-400 via-cyan-400 to-blue-600 animate-pulse-slow">
 							404
 						</h1>
 						<div className="absolute inset-0 blur-3xl bg-blue-500/20 -z-10" />
 					</div>
-
-					{/* Error Message */}
 					<div className="space-y-4">
 						<h2 className="text-3xl md:text-4xl font-bold text-white">
 							Page Not Found
@@ -31,8 +28,6 @@ function NotFoundPage() {
 							dashboard.
 						</p>
 					</div>
-
-					{/* Action Buttons */}
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
 						<Link
 							to="/"
@@ -44,7 +39,6 @@ function NotFoundPage() {
 							</div>
 							<div className="absolute inset-0 bg-linear-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 						</Link>
-
 						<button
 							type="button"
 							onClick={() => window.history.back()}
@@ -56,8 +50,6 @@ function NotFoundPage() {
 							</div>
 						</button>
 					</div>
-
-					{/* Helpful Links */}
 					<div className="pt-8 space-y-3">
 						<p className="text-gray-500 text-sm uppercase tracking-wider font-semibold">
 							Quick Links

@@ -165,7 +165,6 @@ export const serviceCategories: ServiceCategory[] = [
 				url: "https://lambda.fivem.net",
 				description: "lambda.fivem.net — validation endpoint",
 				validateResponse: (_status, body) => {
-					// Lambda returns 503 but is operational if it has a valid version field
 					try {
 						const json = JSON.parse(body);
 						return typeof json.version === "string" && json.version.length > 0;

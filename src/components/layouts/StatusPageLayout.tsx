@@ -9,7 +9,6 @@ import { ServiceCategoryCard } from "@/components/ui/ServiceCategoryCard";
 import type { StatusSummary } from "@/types/status";
 import { cn } from "@/utils/cn";
 
-/** Auto-refresh interval: 5 minutes. */
 const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 
 function timeSince(iso: string): string {
@@ -28,7 +27,6 @@ export default function StatusPageLayout() {
 	const [lastRefreshLabel, setLastRefreshLabel] = useState("loading…");
 	const initialFetchDone = useRef(false);
 
-	// Keep the "Xm ago" label ticking
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (data?.lastChecked) {
@@ -52,7 +50,6 @@ export default function StatusPageLayout() {
 		}
 	}, []);
 
-	// Fetch on mount (client-side, non-blocking)
 	useEffect(() => {
 		if (!initialFetchDone.current) {
 			initialFetchDone.current = true;
@@ -60,7 +57,6 @@ export default function StatusPageLayout() {
 		}
 	}, [refresh]);
 
-	// Auto-refresh every 5 minutes
 	useEffect(() => {
 		const interval = setInterval(refresh, REFRESH_INTERVAL_MS);
 		return () => clearInterval(interval);
@@ -78,14 +74,11 @@ export default function StatusPageLayout() {
 						<InitialLoader />
 					) : (
 						<>
-							{/* Overall banner */}
 							<OverallBanner
 								status={data.overall}
 								operationalCount={data.operationalCount}
 								totalServices={data.totalServices}
 							/>
-
-							{/* Toolbar */}
 							<div className="flex items-center justify-between">
 								<div className="flex items-center gap-2 text-xs text-gray-500">
 									<Clock size={14} />
@@ -109,8 +102,6 @@ export default function StatusPageLayout() {
 									{refreshing ? "Checking…" : "Refresh"}
 								</button>
 							</div>
-
-							{/* Service categories */}
 							<div className="space-y-4">
 								{data.categories.map((cat) => (
 									<ServiceCategoryCard key={cat.id} category={cat} />

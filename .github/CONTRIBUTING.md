@@ -1,6 +1,6 @@
-# Contributing to FixFX Links
+# Contributing
 
-Thank you for your interest in contributing to FixFX Links! This document provides guidelines and instructions for contributing to the project.
+Guidelines for contributing to this project.
 
 ## Code of Conduct
 
@@ -16,24 +16,24 @@ Please be respectful and constructive in all interactions. We're building a welc
 
 ### Local Development
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/FixFXOSS/cfxstat.us.git
-   cd links.fixfx.wiki
+   git clone https://github.com/CodeMeAPixel/cfxstat.us.git
+   cd cfxstat.us
    ```
 
-2. **Install dependencies:**
+2. Install dependencies:
    ```bash
    bun install
    ```
 
-3. **Start the development server:**
+3. Start the dev server:
    ```bash
    bun run dev
    ```
-   The site will be available at `http://localhost:3000`
+   Visit `http://localhost:3000`
 
-4. **Create a new branch:**
+4. Create a feature branch:
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -42,9 +42,9 @@ Please be respectful and constructive in all interactions. We're building a welc
 
 ### Code Style
 
-- We use **Biome** for formatting and linting
-- Run `bun run lint` to check for issues
-- Run `bun run format` to auto-format code
+- Biome for formatting and linting
+- `bun run lint` to check
+- `bun run format` to auto-format
 
 ### TypeScript
 
@@ -54,10 +54,10 @@ Please be respectful and constructive in all interactions. We're building a welc
 
 ### Components
 
-- Keep components focused and single-responsibility
-- Use Lucide React for icons (don't add new icon libraries)
-- Use Tailwind CSS for styling (no inline styles)
-- Add proper TypeScript types for all props
+- Single-responsibility components
+- Use Lucide React for icons
+- Tailwind CSS for styling
+- Proper TypeScript types for all props
 
 ### Commits
 
@@ -129,40 +129,27 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
 
 ## Reporting Issues
 
-Found a bug or have a feature request? Please:
-1. Check if the issue already exists on [GitHub Issues](https://github.com/FixFXOSS/cfxstat.us/issues)
-2. Provide clear description and steps to reproduce bugs
-3. Include your environment (OS, Node version, browser if applicable)
+Found a bug? Have a feature request?
+1. Check [GitHub Issues](https://github.com/CodeMeAPixel/cfxstat.us/issues)
+2. Provide clear description and reproduction steps
+3. Include your environment (OS, Node version, browser)
 
 ## Project Structure
 
 ```
 src/
-├── components/
-│   ├── Header.tsx              # Navigation header
-│   ├── icons/                  # Custom icons
-│   └── layouts/
-│       └── LinkHubContent.tsx   # Main page component with pagination & deep linking
-├── routes/
-│   ├── __root.tsx              # Root layout with meta tags
-│   └── index.tsx               # Home page
-├── data/
-│   ├── categories.ts           # Link data
-│   ├── profile.ts              # User profile
-│   └── social-links.ts         # Social media links
-├── types/
-│   └── links.ts                # TypeScript types
-└── styles.css                  # Global styles & theme
+├── routes/              # File-based routes
+├── components/          # React components
+├── data/                # Monitored endpoints
+├── types/               # TypeScript types
+├── utils/               # Utilities
+└── styles.css           # Global styles
 ```
 
 ## Questions?
 
-Feel free to reach out:
-- Email: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
-- GitHub: [FixFXOSS/cfxstat.us](https://github.com/FixFXOSS/cfxstat.us)
+Email: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
 
 ## License
 
-By contributing to FixFX Links, you agree that your contributions will be licensed under the same license as the project (see [LICENSE](LICENSE)).
-
-Thank you for contributing!
+By contributing, you agree your contributions will be licensed under the same license as the project (see [LICENSE](LICENSE)).

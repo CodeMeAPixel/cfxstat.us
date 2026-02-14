@@ -2,7 +2,7 @@
 
 ## Our Commitment
 
-FixFX is committed to providing a welcoming, inclusive, and harassment-free environment for all contributors and community members, regardless of:
+This project is committed to providing a welcoming and harassment-free environment for all contributors, regardless of:
 - Age, body size, disability, ethnicity, gender identity and expression
 - Level of experience, nationality, personal appearance
 - Race, religion, sexual identity and orientation
@@ -49,15 +49,8 @@ All reports will be reviewed and investigated. All reports will be treated with 
 
 ## Scope
 
-This Code of Conduct applies within all community spaces, including:
-- GitHub issues and pull requests
-- Project discussions
-- Any communications related to the FixFX Links project
+This applies to GitHub issues, pull requests, and project discussions.
 
 ## Acknowledgment
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1.
-
----
-
-**Thank you for helping make FixFX Links a positive community!**
+Adapted from the [Contributor Covenant](https://www.contributor-covenant.org/).

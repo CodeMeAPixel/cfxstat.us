@@ -1,15 +1,15 @@
 {
   "name": "cfxstat.us",
-  "description": "Unofficial status page for Cfx.re services — tracking FiveM, RedM, and related infrastructure in real time.",
-  "author": "FixFXOSS <https://github.com/FixFXOSS>",
+  "description": "Unofficial status page for Cfx.re services tracking FiveM, RedM, and related infrastructure in real time.",
+  "author": "CodeMeAPixel <https://github.com/CodeMeAPixel>",
   "license": "GPL-3.0-only",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FixFXOSS/cfxstat.us.git"
+    "url": "https://github.com/CodeMeAPixel/cfxstat.us.git"
   },
   "bugs": {
     "email": "hey@codemeapixel.dev",
-    "url": "https://github.com/FixFXOSS/cfxstat.us/issues"
+    "url": "https://github.com/CodeMeAPixel/cfxstat.us/issues"
   },
   "homepage": "https://cfxstat.us",
   "type": "module",

@@ -1,110 +1,78 @@
-# Security Policy
+# Security
 
-## Reporting Security Vulnerabilities
+## Reporting Vulnerabilities
 
-If you discover a security vulnerability in FixFX, please **do not** open a public GitHub issue. Instead, please report it responsibly to:
+Do not open public GitHub issues for security vulnerabilities. Report to:
 
-**Email:** [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
+[hey@codemeapixel.dev](mailto:hey@codemeapixel.dev) with subject "Security Vulnerability Report"
 
-**Subject:** Security Vulnerability Report - FixFX Links
+Include description, reproduction steps, impact, and suggested fix if available.
 
-Please include:
-- Description of the vulnerability
-- Steps to reproduce (if applicable)
-- Potential impact
-- Suggested fix (if you have one)
+## Best Practices
 
-We will acknowledge your report within 48 hours and work with you to address the issue responsibly.
+### Deployers
 
-## Security Considerations
-
-### For Users/Deployers
-
-- Keep your Cloudflare Workers account credentials secure
-- Use environment variables for sensitive configuration
+- Keep Cloudflare credentials secure
+- Use environment variables for sensitive data
 - Regularly update dependencies: `bun update`
-- Monitor Cloudflare security advisories for your Workers deployment
 
-### For Contributors
+### Contributors
 
-- Never commit secrets, API keys, or credentials
-- Use environment variables (`.env`, `.env.local`) for sensitive data
-- These files should be in `.gitignore` and never committed
-- Review code for potential XSS or injection vulnerabilities before submitting PRs
+- Never commit secrets or API keys
+- Use `.env` files for sensitive data (added to `.gitignore`)
+- Check for XSS and injection vulnerabilities in PRs
 
-### Known Security Best Practices in This Project
+## Dependencies
 
-1. **Content Security:** All user-generated content is carefully handled
-2. **Dependencies:** We use `bun` for reliable dependency management
-3. **Deployment:** Hosted on Cloudflare Workers with edge security
-4. **TypeScript:** Strict typing helps prevent runtime vulnerabilities
-
-## Third-Party Dependencies
-
-This project uses the following key dependencies:
-
-- **@tanstack/react-start** - React 19 framework
-- **tailwindcss** - CSS framework
-- **lucide-react** - Icon library
-- **@cloudflare/vite-plugin** - Cloudflare Workers integration
-
-These dependencies are regularly updated to patch security vulnerabilities.
+Key dependencies are regularly updated:
+- @tanstack/react-start
+- tailwindcss
+- lucide-react
+- @cloudflare/vite-plugin
 
 ## Dependency Scanning
 
-- Use `bun audit` to check for known vulnerabilities:
-  ```bash
-  bun audit
-  ```
-
-- Run security checks before deploying:
-  ```bash
-  bun audit --fix
-  ```
+```bash
+bun audit           # Check for vulnerabilities
+bun audit --fix     # Fix vulnerabilities
+```
 
 ## Environment Variables
 
-Never expose the following:
-- Cloudflare API tokens (in `wrangler.jsonc`)
-- Any third-party service credentials
-- Database connection strings (if added in the future)
+Do not expose:
+- Cloudflare API tokens
+- Service credentials
+- Database connection strings
 
-Use Cloudflare Workers Secrets for sensitive data:
+Use Cloudflare Workers Secrets:
 ```bash
 wrangler secret put SECRET_NAME
 ```
 
-## Deployment Security
+## Deployment
 
-- Always authenticate before deploying: `wrangler login`
-- Use separate staging and production environments
-- Review changes before deployment
-- Enable Cloudflare's DDoS protection
-- Ensure HTTPS is enforced
+- Authenticate: `wrangler login`
+- Review changes before deploying
+- Enable Cloudflare DDoS protection
+- Enforce HTTPS
 
-## Security Updates
+## Updates
 
-- Monitor GitHub security advisories for this repository
-- Enable Dependabot alerts on your fork
-- Review and test dependency updates before committing
+- Monitor GitHub security advisories
+- Enable Dependabot alerts
+- Test dependency updates before committing
 
-## Responsible Disclosure
+## Disclosure
 
-When responsibly disclosing vulnerabilities:
-1. Give us reasonable time to fix the issue before publicly disclosing
-2. Avoid accessing other users' data or systems
-3. Don't perform any destructive testing
+1. Allow reasonable time for fixes before public disclosure
+2. Don't access other users' data
+3. Avoid destructive testing
 4. Act in good faith
 
 ## Contact
 
-For security-related questions or concerns, please contact:
-- **Email:** [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
-- **GitHub:** [FixFXOSS/cfxstat.us](https://github.com/FixFXOSS/cfxstat.us)
-
-## Acknowledgments
-
-We appreciate the security community's help in keeping FixFX Links safe and secure. Security researchers who report vulnerabilities responsibly will be acknowledged in this document (with permission).
+- Email: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
+- GitHub: [CodeMeAPixel/cfxstat.us](https://github.com/CodeMeAPixel/cfxstat.us)
 
 ---
 

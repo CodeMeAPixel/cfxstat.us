@@ -8,18 +8,12 @@ const totalServices = serviceCategories.reduce(
 	0,
 );
 
-/** How long each step lingers before moving to the next. */
 const STEP_INTERVAL_MS = 1_800;
 
-/**
- * Engaging initial loader shown while the first status check runs.
- * Cycles through service categories to show what's being probed.
- */
 export function InitialLoader() {
 	const [activeStep, setActiveStep] = useState(0);
 	const [dots, setDots] = useState("");
 
-	// Cycle through categories
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setActiveStep((prev) => {
@@ -30,7 +24,6 @@ export function InitialLoader() {
 		return () => clearInterval(interval);
 	}, []);
 
-	// Animate ellipsis
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setDots((prev) => (prev.length >= 3 ? "" : `${prev}.`));
@@ -40,15 +33,12 @@ export function InitialLoader() {
 
 	return (
 		<div className="flex flex-col items-center justify-center py-16 gap-8 animate-in fade-in duration-500">
-			{/* Pulse icon */}
 			<div className="relative">
 				<div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping" />
 				<div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/10 border border-blue-500/20">
 					<Activity size={28} className="text-blue-400" />
 				</div>
 			</div>
-
-			{/* Title */}
 			<div className="text-center space-y-2">
 				<h2 className="text-lg font-semibold text-white">
 					Running Status Checks{dots}
@@ -58,8 +48,6 @@ export function InitialLoader() {
 					categories. This may take a few seconds.
 				</p>
 			</div>
-
-			{/* Category checklist */}
 			<div className="w-full max-w-sm space-y-2">
 				{serviceCategories.map((cat, idx) => {
 					const isDone = idx < activeStep;
@@ -79,7 +67,6 @@ export function InitialLoader() {
 									"border-white/5 bg-white/2 text-gray-600",
 							)}
 						>
-							{/* Icon */}
 							<div className="shrink-0">
 								{isDone ? (
 									<CheckCircle2 size={16} className="text-emerald-400" />
@@ -89,8 +76,6 @@ export function InitialLoader() {
 									<Radio size={16} className="text-gray-600" />
 								)}
 							</div>
-
-							{/* Label */}
 							<span
 								className={cn(
 									"text-sm font-medium transition-colors duration-300",
@@ -101,8 +86,6 @@ export function InitialLoader() {
 							>
 								{cat.name}
 							</span>
-
-							{/* Service count */}
 							<span
 								className={cn(
 									"ml-auto text-xs tabular-nums",
@@ -118,8 +101,6 @@ export function InitialLoader() {
 					);
 				})}
 			</div>
-
-			{/* Subtle footer */}
 			<p className="text-[11px] text-gray-600 text-center">
 				Checks run concurrently with retry &amp; rate-limit handling
 			</p>

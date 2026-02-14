@@ -6,34 +6,21 @@ export type ServiceStatus =
 	| "unknown";
 
 export interface ServiceEndpoint {
-	/** Unique identifier */
 	id: string;
-	/** Display name */
 	name: string;
-	/** URL to health-check */
 	url: string;
-	/** Optional description */
 	description?: string;
-	/** HTTP method (default GET) */
 	method?: "GET" | "HEAD" | "POST";
-	/** Expected status code (default 200) */
 	expectedStatus?: number;
-	/** Accept partial matches, e.g. 2xx */
 	acceptRange?: boolean;
-	/** Custom response validator — if provided, overrides status code checks */
 	validateResponse?: (status: number, body: string) => boolean;
 }
 
 export interface ServiceCategory {
-	/** Unique identifier */
 	id: string;
-	/** Display name */
 	name: string;
-	/** Icon name (lucide) */
 	icon: string;
-	/** Accent colour class */
 	color: string;
-	/** Endpoints in this category */
 	services: ServiceEndpoint[];
 }
 

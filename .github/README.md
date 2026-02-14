@@ -1,21 +1,19 @@
 # CFX Status
 
-Unofficial real-time status page for Cfx.re services — monitors FiveM, RedM, Forum, Keymaster, Marketplace, and related infrastructure. Built with TanStack Start and deployed on Cloudflare Workers.
+Unofficial real-time status page for Cfx.re services. Monitors FiveM, RedM, Forum, Keymaster, Marketplace, and infrastructure. Built with TanStack Start and deployed on Cloudflare Workers.
 
-[![Build status](https://github.com/FixFXOSS/cfxstat.us/actions/workflows/test-build.yml/badge.svg)](https://github.com/FixFXOSS/cfxstat.us/actions)
-[![Lint status](https://github.com/FixFXOSS/cfxstat.us/actions/workflows/validate-linting.yml/badge.svg)](https://github.com/FixFXOSS/cfxstat.us/actions)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
-[![Deployed on Cloudflare Workers](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Workers-orange.svg)](https://workers.cloudflare.com/)
+> [!INFO]
+> **DISCLAIMER:** This is an **unofficial** project and is **not affiliated** with Cfx.re, Rockstar Games, or Take-Two Interactive. All trademarks belong to their respective owners.
 
 ## Features
 
-- **Live Service Monitoring**: Probes Cfx.re endpoints and reports status in real time
-- **Categorised Services**: Core Platform, Game Services, Runtime & Builds, Marketplace, Auth & APIs
-- **Response Times**: Per-service latency with colour-coded indicators
-- **Auto Refresh**: Client auto-refreshes every 5 minutes, manual refresh button available
-- **Client-Side Fetching**: Status is fetched on the client for instant page load with loading skeleton
-- **API Endpoint**: `/api/status` returns JSON for programmatic consumption
-- **Responsive Design**: Dark-themed glassmorphic UI optimised for all screen sizes
+- Live service monitoring with real-time status probes
+- Categorized services across 6 categories
+- Per-service response times with color-coded indicators
+- Auto-refresh every 5 minutes with manual refresh button
+- Client-side fetching for instant page loads
+- JSON API endpoint at `/api/status`
+- Responsive dark-themed UI
 
 ## Getting Started
 
@@ -108,21 +106,17 @@ The site will be available at `https://cfxstat.us`.
 - **Deployment**: Cloudflare Workers
 - **Utilities**: clsx, tailwind-merge
 
-## Disclaimer
-
-This is an **unofficial** project and is **not affiliated** with Cfx.re, Rockstar Games, or Take-Two Interactive. All trademarks belong to their respective owners.
-
 ## Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Code of Conduct
 
-Please review our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
+Review [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before participating.
 
 ## Security
 
-For security concerns, please see [SECURITY.md](SECURITY.md). **Do not** open public issues for security vulnerabilities.
+See [SECURITY.md](SECURITY.md) for security concerns. Do not open public issues for vulnerabilities.
 
 ## License
 
@@ -130,7 +124,7 @@ This project is licensed under the [GNU Affero General Public License v3](../LIC
 
 ## Contact
 
-- **Email**: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
-- **GitHub**: [FixFXOSS/cfxstat.us](https://github.com/FixFXOSS/cfxstat.us)
-- **Site**: [https://cfxstat.us](https://cfxstat.us)
+- Email: [hey@codemeapixel.dev](mailto:hey@codemeapixel.dev)
+- GitHub: [CodeMeAPixel/cfxstat.us](https://github.com/CodeMeAPixel/cfxstat.us)
+- Site: [https://cfxstat.us](https://cfxstat.us)
 
