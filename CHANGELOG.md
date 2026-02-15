@@ -16,9 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Discord Webhooks** — Register Discord webhooks to receive instant notifications when incidents occur
 - **Webhook Management UI** — Add, test, and manage Discord webhooks in the Subscribe tab with success/failure status tracking
 - **Rate Limiting** — Per-webhook rate limits (5 tests/hour, 2/minute) with exponential backoff to prevent Discord API abuse
-- **Intelligent Retry Logic** — Automatic retries with exponential backoff for transient failures; respects Discord's `Retry-After` header
-- **Cloudflare KV Namespaces** — INCIDENTS and WEBHOOKS KV bindings configured in Wrangler for persistent storage
+- **Intelligent Retry Logic** — Automatic retries with exponential backoff for transient network failures; respects Discord's `Retry-After` header
 - **Subscribe Tab** — Consolidated subscription options (RSS, Email coming soon, Discord webhooks) with user-friendly UI
+- **KV Storage Integration** — Cloudflare KV namespaces for persistent storage of incidents and webhooks across deployments
+- **Webhook Validation & Testing** — Discord webhook URL format validation with test endpoint to verify connectivity before relying on webhooks
 
 ### Changed
 
@@ -28,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation** — Simplified and cleaned up README, CONTRIBUTING, DEPLOYMENT, SECURITY, and CODE_OF_CONDUCT files; removed unnecessary complexity
 - **Category Cards** — Changed from open-by-default to closed-by-default for cleaner initial page state
 - **Status Page Layout** — Reorganized with tabbed interface (Overview, Incidents, Subscribe) for better information hierarchy
+- **Storage Backend** — Migrated from in-memory stores to Cloudflare KV for persistent incident and webhook data; maintains fallback to in-memory for development
+- **Webhook Error Handling** — Improved error messages showing Discord API responses and retry timing for rate-limited requests
 
 ## [0.1.1] - 2026-02-14
 
